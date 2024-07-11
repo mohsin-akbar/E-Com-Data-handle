@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Edit Record</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-color: #e2e2e2;
+        }
+        .container {
+            max-width: 600px;
+            margin-top: 50px;
+            background:#f9f9f9;
+            
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container ">
+        <h1 class="my-3 p-3">Edit Record in {{ table_name }}</h1>
+        <form method="POST" action="{{ url_for('edit_record', table_name=table_name, record_id=record_id) }}" >
+            {% for column, value in zip(columns, record) %}
+            <div class="form-group">
+                <label for="{{ column }}">{{ column }}</label>
+                <input type="text" class="form-control" id="{{ column }}" name="{{ column }}" value="{{ value }}">
+            </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary ml-3">Update</button>
+        </form>
+        <a href="{{ url_for('show_table', table_name=table_name) }}" class="btn btn-warning m-3">Back</a>
+    </div>
+    <footer class="footer bg-dark text-white mt-3 py-3">
+        <div class=" text-center">
+          <span>&copy; 2024 Mohsin-ContinuServe</span>
+        </div>
+      </footer>
+</body>
+</html>

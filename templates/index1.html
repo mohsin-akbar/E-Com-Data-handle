@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Database Table</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <style>
+        html {
+          position: relative;
+          min-height: 100%;
+        }
+        body {
+          margin-bottom: 60px; /* Margin bottom by footer height */
+        }
+        .footer {
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          background-color: #343a40; /* Dark background color */
+          color: white; /* White text color */
+          text-align: center;
+          padding: 15px 0; /* Padding top and bottom */
+        }
+      </style>
+      
+  </head>
+  <body>
+    <div class="containe text-center p-5 m-5">
+      <h1 class="mt-5">Select Table</h1>
+      <form method="POST" action="{{ url_for('show_table') }}">
+        <div class="form-group">
+          <label for="table_name">Select a table:</label>
+          <select class="form-control" id="table_name" name="table_name">
+            {% for table in tables %}
+            <option value="{{ table }}">{{ table }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Show Table</button>
+      </form>
+    </div>
+    <footer class="footer bg-dark text-white py-3">
+        <div class=" text-center">
+          <span>&copy; 2024 Mohsin-ContinuServe</span>
+        </div>
+      </footer>
+  </body>
+</html>
